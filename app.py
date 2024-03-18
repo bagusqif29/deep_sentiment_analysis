@@ -1,6 +1,7 @@
 import streamlit as st
 from deep_translator import GoogleTranslator
 import requests
+import os
 
 st.markdown("""
     <style>
@@ -11,7 +12,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-API_TOKEN = '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'
+API_TOKEN = st.secrets["API_TOKEN"]
 headers = {"Authorization": f"Bearer {API_TOKEN}"}
 API_URL = "https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english"
 
