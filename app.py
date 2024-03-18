@@ -14,7 +14,7 @@ st.markdown("""
 
 API_TOKEN = st.secrets["API_TOKEN"]
 headers = {"Authorization": f"Bearer {API_TOKEN}"}
-API_URL = "https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english"
+API_URL = st.secrets["api_url"]
 
 def query(payload):
     response = requests.post(API_URL, headers=headers, json=payload)
