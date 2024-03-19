@@ -2,6 +2,7 @@ import streamlit as st
 from deep_translator import GoogleTranslator
 import requests
 import os
+#dari pc
 
 st.markdown("""
     <style>
