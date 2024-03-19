@@ -19,6 +19,8 @@ def query(payload):
     response = requests.post(API_URL, headers=headers, json=payload)
     return response.json()
 
+
+
 st.title('Sentiment Analysis with DeepLearning')
 
 user_input = st.text_input("Enter Your Sentence :")
@@ -35,5 +37,5 @@ if user_input :
         data_f = 'unknown'
 
         
-    st.write('   ')
+    st.write('  ')
     st.title(data_f['label'])
