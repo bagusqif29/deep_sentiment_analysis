@@ -2,6 +2,8 @@ import streamlit as st
 from deep_translator import GoogleTranslator
 import requests
 import os
+from flask_sqlalchemy import SQLAlchemy
+
 
 st.markdown("""
     <style>
@@ -11,6 +13,22 @@ st.markdown("""
     .stDeployButton {display:none;}
     </style>
     """, unsafe_allow_html=True)
+
+# Inisialisasi database
+db = SQLAlchemy('sqlite:///example.db')  # Ganti dengan URL database Anda
+
+class Data(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.String(3200), nullable=False)
+    text_trans_en = db.Column(db.String(3200))
+    text_trans_id = db.Column(db.String(3200))
+    origin_lang = db.Column(db.String(100))
+    sentiment = db.Column(db.String(100))
+    ip = db.Column(db.String(100))
+    long = db.Column(db.String(100))
+    lat = db.Column(db.String(100))
+    city = db.Column(db.String(100))
+    waktu = db.Column(db.DateTime, default=db.func.current_timestamp())
 
 API_TOKEN = st.secrets["API_TOKEN"]
 headers = {"Authorization": f"Bearer {API_TOKEN}"}
